@@ -7,4 +7,4 @@ tags:
   - Javascript
   - Mobile UI
 ---
-.
+![](/img/vh1-768x432.jpg)
