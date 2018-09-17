@@ -8,4 +8,6 @@ tags:
   - Javascript
   - CSS3
 ---
+![](/img/osprey1-768x428.jpg)
+
 .
