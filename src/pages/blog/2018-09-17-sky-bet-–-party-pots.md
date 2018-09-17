@@ -8,4 +8,6 @@ tags:
   - ES6
   - Redux
 ---
+![](/img/pps-768x393.png)
+
 .

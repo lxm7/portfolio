@@ -8,4 +8,4 @@ tags:
   - ES6
   - Redux
 ---
-.
+![](/img/svbt-3-1-768x420.png)

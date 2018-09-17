@@ -12,13 +12,13 @@ module.exports = {
         name: 'pages',
       },
     },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/src/img`,
-        name: 'images',
-      },
-    },
+    // {
+    //   resolve: 'gatsby-source-filesystem',
+    //   options: {
+    //     path: `${__dirname}/src/img`,
+    //     name: 'images',
+    //   },
+    // },
     `gatsby-remark-copy-linked-files`,
     'gatsby-transformer-sharp',
     `gatsby-plugin-sharp`,
@@ -28,12 +28,12 @@ module.exports = {
         maxWidth: 1080,
       },
     },
-    // {
-    //   resolve: 'gatsby-transformer-remark',
-    //   options: {
-    //     plugins: [],
-    //   },
-    // },
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [],
+      },
+    },
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {

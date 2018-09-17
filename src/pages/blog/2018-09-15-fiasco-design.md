@@ -8,4 +8,4 @@ tags:
   - CSS3
   - Javascript
 ---
-.
+![](/img/fiasco-768x365.jpg)

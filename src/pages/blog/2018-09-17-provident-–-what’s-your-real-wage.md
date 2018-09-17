@@ -8,4 +8,4 @@ tags:
   - Node
   - MongoDB
 ---
-.
+![](/img/provident-real-wage-1024x565_z-768x424.jpg)

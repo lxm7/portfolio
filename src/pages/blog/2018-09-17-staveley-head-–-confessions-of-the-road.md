@@ -8,4 +8,4 @@ tags:
   - Node
   - MongoDB
 ---
-.
+![](/img/staveley-confessions-768x425.png)
