@@ -9,4 +9,4 @@ tags:
   - Redux
   - Immutable
 ---
-.
+![](/img/mantic-p-768x463.png)
