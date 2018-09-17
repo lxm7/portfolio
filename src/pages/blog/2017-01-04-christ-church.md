@@ -8,4 +8,4 @@ tags:
   - Javascript
   - CSS3
 ---
-.
+![ChristChurch](/img/Screen-Shot-2013-09-13-at-15.07.24-768x447.png)
