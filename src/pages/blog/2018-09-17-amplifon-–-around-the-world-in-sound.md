@@ -8,4 +8,4 @@ tags:
   - Node
   - MongoDB
 ---
-.
+![](/img/amplifon-1-768x430.png)
