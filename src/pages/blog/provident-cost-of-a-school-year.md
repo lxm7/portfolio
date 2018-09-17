@@ -7,4 +7,4 @@ tags:
   - React
   - Redux
 ---
-.
+![](/img/prov-1-768x420.png)
