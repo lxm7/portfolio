@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby + Netlify CMS Starter',
+    title: 'Portfolio - Alex Moreton',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -19,14 +19,21 @@ module.exports = {
         name: 'images',
       },
     },
-    'gatsby-plugin-sharp',
+    `gatsby-remark-copy-linked-files`,
     'gatsby-transformer-sharp',
+    `gatsby-plugin-sharp`,
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: `gatsby-remark-images`,
       options: {
-        plugins: [],
+        maxWidth: 1080,
       },
     },
+    // {
+    //   resolve: 'gatsby-transformer-remark',
+    //   options: {
+    //     plugins: [],
+    //   },
+    // },
     {
       resolve: 'gatsby-plugin-netlify-cms',
       options: {
