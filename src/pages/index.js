@@ -27,11 +27,12 @@ export default class IndexPage extends React.Component {
                   }}
                   key={post.id}
                 >
-                  <p>
-                    <Link className="has-text-primary" to={post.fields.slug}>
-                      {post.frontmatter.title}
+
+                    <Link className="image_wrap has-text-primary" to={post.fields.slug}>
+                        <h4>{post.frontmatter.title}</h4>
+                        
+                        <img src={post.frontmatter.image} alt='' />
                     </Link>
-                  </p>
                 </div>
               ))}
           </div>
@@ -66,6 +67,7 @@ export const pageQuery = graphql`
             title
             templateKey
             date(formatString: "MMMM DD, YYYY")
+            image
           }
         }
       }
