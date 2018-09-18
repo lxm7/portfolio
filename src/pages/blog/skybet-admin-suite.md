@@ -10,4 +10,4 @@ tags:
   - GraphQL
   - NextJS
 ---
-![](/img/placeholder-image4-1-768x432.jpg)
+![null](/img/placeholder-image4-1-768x432.jpg)
