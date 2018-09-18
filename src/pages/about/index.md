@@ -2,23 +2,41 @@
 templateKey: about-page
 title: About
 ---
-Hi, thanks for popping by. I’m Javascript developer living in Leeds and this is just a portfolio site to showcase a few things I’ve been doing for the web recently.
+Javascript developer living in UK.
+Quick portfolio site primarily for complementing CV purposes.
+Built with Gatsby and NetlifyCMS
+Leveraging latest and smartest best practises with React, ES6, Redux, Typescript.
 
-Most of my time is spent leveraging the latest and smartest best practises with React, ES6, Redux, Typescript.
+Key npm packages used extensively:
 
-A few other key npm packages used extensively:
-
+* React
+* Redux
+* Typecscript
 * Next
-* Apollo v2 / Graphql
+* Apollo
+* Graphql
 * Reselect
 * Immutable
+* CSS3
 
-A few things on the horizon I’m currently integrating into future projects, likely in this order:
+Working knowledge of:
 
 * React Native
+* AWS
+* Node
+* Docker
+* MongoDB
+* MySQL
+* Wordpress
+
+Currently learning:
+
 * Golang
-* More AWS / Terraform / Docker for hosting, orchestrating and automating, repsectively
-* More node microservices (simple data aggregator via a cron is the next one on the list)
+* AWS/Terraform/Docker
+* Node microservices
+
+On the horizon: 
+
 * PostgresSQL – triggers, pub/subs
 * D3JS
 * Simple Redis and Kafka demos

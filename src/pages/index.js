@@ -12,25 +12,14 @@ export default class IndexPage extends React.Component {
       <Layout>
         <section className="section">
           <div className="container">
-            <div className="content">
-              <h1 className="has-text-weight-bold is-size-2">Past projects</h1>
-            </div>
             {posts
               .map(({ node: post }) => (
                 <div
                   className="content"
-                  style={{ 
-                    width: '400px',
-                    height: '250px',
-                    float: 'left',
-                    padding: '0px 40px 80px 0px', 
-                  }}
                   key={post.id}
                 >
-
+                    <h4>{post.frontmatter.title}</h4>
                     <Link className="image_wrap has-text-primary" to={post.fields.slug}>
-                        <h4>{post.frontmatter.title}</h4>
-                        
                         <img src={post.frontmatter.image} alt='' />
                     </Link>
                 </div>
