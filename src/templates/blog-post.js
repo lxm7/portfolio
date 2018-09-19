@@ -68,6 +68,7 @@ const BlogPost = ({ data }) => {
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
         image={post.frontmatter.image}
+        url={post.frontmatter.url}
       />
     </Layout>
   )
@@ -92,6 +93,7 @@ export const pageQuery = graphql`
         description
         tags
         image
+        url
       }
     }
   }

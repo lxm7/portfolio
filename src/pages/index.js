@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 
 export default class IndexPage extends React.Component {
@@ -19,9 +19,9 @@ export default class IndexPage extends React.Component {
                   key={post.id}
                 >
                     <h4>{post.frontmatter.title}</h4>
-                    <Link className="image_wrap has-text-primary" to={post.fields.slug}>
+                    <a className="image_wrap has-text-primary" href={post.frontmatter.url}>
                         <img src={post.frontmatter.image} alt='' />
-                    </Link>
+                    </a>
                 </div>
               ))}
           </div>
@@ -57,6 +57,7 @@ export const pageQuery = graphql`
             templateKey
             date(formatString: "MMMM DD, YYYY")
             image
+            url
           }
         }
       }
