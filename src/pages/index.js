@@ -12,18 +12,15 @@ export default class IndexPage extends React.Component {
       <Layout>
         <section className="section">
           <div className="container">
-            {posts
-              .map(({ node: post }) => (
-                <div
-                  className="content"
-                  key={post.id}
-                >
+            {posts.map(({ node: post }) => (
+                <div className="content" key={post.id}>
                     <h4>{post.frontmatter.title}</h4>
                     <a className="image_wrap has-text-primary" href={post.frontmatter.url}>
                         <img src={post.frontmatter.image} alt='' />
                     </a>
+                    <p>{post.frontmatter.tags.join(' | ')}</p>
                 </div>
-              ))}
+            ))}
           </div>
         </section>
       </Layout>
@@ -58,6 +55,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             image
             url
+            tags
           }
         }
       }

@@ -6,10 +6,11 @@ description: Coming soon
 image: /img/placeholder-image4-1-768x432.jpg
 url: https://alexandermoreton.co.uk
 tags:
-  - Golang
-  - AWS
   - React
   - GraphQL
   - NextJS
+  - Golang
+  - AWS
+  - Azure AD
 ---
 ![null](/img/placeholder-image4-1-768x432.jpg)

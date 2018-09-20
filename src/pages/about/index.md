@@ -3,36 +3,24 @@ templateKey: about-page
 title: About
 ---
 Javascript developer living in UK.
-Quick portfolio site primarily for complementing CV purposes.
-Built with Gatsby and NetlifyCMS
-Leveraging latest and smartest best practises with React, ES6, Redux, Typescript.
 
-Key npm packages used extensively:
+Quick portfolio site primarily for complementing CV purposes. Built with Gatsby, NetlifyCMS and AWS.
 
-* React
-* Redux
-* Typecscript
-* Next
-* Apollo
-* Graphql
-* Reselect
-* Immutable
-* CSS3
+Leveraging the smartest best practises as per project list.
 
-Working knowledge of:
+Also, a working knowledge of:
 
 * React Native
-* AWS
+* AWS/Terraform/Docker
 * Node
-* Docker
 * MongoDB
 * MySQL
 * Wordpress
 
 Currently learning:
 
+* ...Working knowledge list above
 * Golang
-* AWS/Terraform/Docker
 * Node microservices
 
 On the horizon: 

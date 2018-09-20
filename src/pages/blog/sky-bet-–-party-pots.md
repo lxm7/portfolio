@@ -1,6 +1,6 @@
 ---
 templateKey: blog-post
-title: Sky Bet – Party Pots
+title: SkyBet – Party Pots
 date: 2018-09-17T19:27:03.625Z
 description: . 
 image: /img/pps-768x393.png
@@ -9,6 +9,7 @@ tags:
   - React
   - ES6
   - Redux
+  - Typescript
 ---
 ![](/img/pps-768x393.png)
 

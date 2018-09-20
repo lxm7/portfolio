@@ -6,7 +6,7 @@ const Navbar = () => (
     <div className="container">
       <Link className="content content--top" to="/">
         <h2>Alex Moreton</h2>
-        <p>Web developer portfolio</p>
+        <p>Front end developer portfolio</p>
       </Link>
       <div className="content content--top">
         <Link className="navbar-item" to="/about">

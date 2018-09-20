@@ -10,5 +10,6 @@ tags:
   - React
   - Redux
   - Immutable
+  - Reselect
 ---
 ![](/img/mantic-p-768x463.png)
