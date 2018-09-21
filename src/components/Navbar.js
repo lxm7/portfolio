@@ -12,7 +12,24 @@ const Navbar = () => (
         <Link className="navbar-item" to="/about">
           About
         </Link>
-        <a className="navbar-item" href='https://github.com/lxm7'>Github</a>
+        <a 
+            className="navbar-item"
+            href='https://github.com/lxm7'
+        >
+            Github
+        </a>
+        <a
+            className="navbar-item"
+            href='https://www.linkedin.com/in/alex-moreton-3519633b/'
+        >
+            LinkedIn
+        </a>
+        <a
+            className="navbar-item"
+            href='https://stackoverflow.com/users/1341935/lxm7?tab=profile'
+        >
+            Stackoverflow
+        </a>
       </div>
     </div>
   </nav>
