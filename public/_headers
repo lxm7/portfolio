@@ -1,0 +1,125 @@
+## Created with gatsby-plugin-netlify
+
+/*
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
+/static/*
+  Cache-Control: public, max-age=31536000, immutable
+/blog/amplifon-–-around-the-world-in-sound/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/blog/bris-comm-health/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/blog/christ-church/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/blog/fiasco-design/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/blog/cryptocommits/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/blog/latis/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/blog/osprey-clarke/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/blog/mantic-point-–-demo-upon-request/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/blog/provident-–-what’s-your-real-wage/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/blog/provident-cost-of-a-school-year/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/blog/sky-bet-–-bonus-time/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/blog/sky-bet-–-party-pots/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/blog/staveley-head-–-confessions-of-the-road/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/blog/skybet-admin-suite/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/blog/virgin-holidays/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/about/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/tags/react/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/tags/node/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/tags/mongo-db/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/tags/wordpress/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/tags/javascript/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/tags/css-3/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/tags/wordpress-multi-site/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/tags/react-native/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/tags/graph-ql/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/tags/redux/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/tags/aws/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/tags/es-6/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/tags/immutable/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/tags/reselect/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/tags/typescript/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/tags/next-js/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/tags/golang/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/tags/azure-ad/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/tags/mobile-ui/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/404/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/tags/
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script
+/404.html
+  Link: </webpack-runtime-8c988cb32298ebce25ff.js>; rel=preload; as=script
+  Link: </0-cfa4b5bb98e13ca8523e.js>; rel=preload; as=script

@@ -1,4 +1,3 @@
-
 # Input variables
 variable "aws_region" {
   type    = "string"
@@ -14,7 +13,6 @@ variable "bucket_name" {
   type    = "string"
   default = "www.alexandermoreton.co.uk"
 }
-
 
 variable "github_username" {
   type    = "string"
@@ -38,6 +36,128 @@ resource "aws_s3_bucket" "my_s3_portfolio" {
   bucket = "${var.bucket_name}"
   acl    = "private"
 }
+
+# resource "aws_cloudfront_distribution" "web_distribution" {
+#  origin {
+#   domain_name = "alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
+#   origin_id = "S3-Website-alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
+#  }
+
+#  enabled = true
+#  is_ipv6_enabled = true
+
+#  ordered_cache_behavior {
+#   allowed_methods = ["GET", "HEAD"]
+#   cached_methods = ["GET", "HEAD"]
+#   target_origin_id = "alexandermoreton.co.uk"
+#   path_pattern = "*.zip"
+
+#   forwarded_values {
+#    query_string = false
+
+#    cookies {
+#     forward = "none"
+#    }
+#   }
+
+#   viewer_protocol_policy = "allow-all"
+#   min_ttl = 0
+#   max_ttl = 31536000
+#   default_ttl = 86400
+#  }
+
+#  default_cache_behavior {
+#   allowed_methods = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
+#   cached_methods = ["GET", "HEAD"]
+#   target_origin_id = "alexandermoreton.co.uk"
+#   smooth_streaming = false
+
+#   forwarded_values {
+#    query_string = false
+
+#    cookies {
+#     forward = "whitelist"
+#     whitelisted_names = ["session", "variables"]
+#    }
+#   }
+
+#   viewer_protocol_policy = "allow-all"
+#   min_ttl = 0
+#   max_ttl = 31536000
+#   default_ttl = 86400
+#  }
+   
+#  restrictions {
+#   geo_restriction {
+#    restriction_type = "none"
+#   }
+#  }
+  
+#  viewer_certificate {
+#   cloudfront_default_certificate = true
+#  }
+# }
+
+# resource "aws_cloudfront_distribution" "www_distribution" {
+#  origin {
+#   domain_name = "www.alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
+#   origin_id = "S3-Website-www.alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
+#  }
+
+#  enabled = true
+#  is_ipv6_enabled = true
+
+#  ordered_cache_behavior {
+#   allowed_methods = ["GET", "HEAD"]
+#   cached_methods = ["GET", "HEAD"]
+#   target_origin_id = "www.alexandermoreton.co.uk"
+#   path_pattern = "*.zip"
+
+#   forwarded_values {
+#    query_string = false
+
+#    cookies {
+#     forward = "none"
+#    }
+#   }
+
+#   viewer_protocol_policy = "allow-all"
+#   min_ttl = 0
+#   max_ttl = 31536000
+#   default_ttl = 86400
+#  }
+
+#  default_cache_behavior {
+#   allowed_methods = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
+#   cached_methods = ["GET", "HEAD"]
+#   target_origin_id = "www.alexandermoreton.co.uk"
+#   smooth_streaming = false
+
+#   forwarded_values {
+#    query_string = false
+
+#    cookies {
+#     forward = "whitelist"
+#     whitelisted_names = ["session", "variables"]
+#    }
+#   }
+
+#   viewer_protocol_policy = "allow-all"
+#   min_ttl = 0
+#   max_ttl = 31536000
+#   default_ttl = 86400
+#  }
+   
+#  restrictions {
+#   geo_restriction {
+#    restriction_type = "none"
+#   }
+#  }
+  
+#  viewer_certificate {
+#   cloudfront_default_certificate = true
+#  }
+# }
 
 data "aws_iam_policy_document" "codepipeline_assume_policy" {
   statement {
