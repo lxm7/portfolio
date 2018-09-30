@@ -9,9 +9,14 @@ variable "pipeline_name" {
   default = "alexandermoreton"
 }
 
-variable "bucket_name" {
+variable "www_domain_name" {
   type    = "string"
   default = "www.alexandermoreton.co.uk"
+}
+
+variable "root_domain_name" {
+  type    = "string"
+  default = "alexandermoreton.co.uk"
 }
 
 variable "github_username" {
@@ -33,8 +38,27 @@ provider "aws" {
 
 # CodePipeline resources
 resource "aws_s3_bucket" "my_s3_portfolio" {
-  bucket = "${var.bucket_name}"
+  bucket = "${var.www_domain_name}"
   acl    = "public-read"
+
+  policy = <<POLICY
+{
+    "Version": "2008-10-17",
+    "Id": "PolicyForPublicWebsiteContent",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "*"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::${var.www_domain_name}/*"
+        }
+    ]
+}
+POLICY
+
   website {
     index_document = "index.html"
     error_document = "error.html"
@@ -42,143 +66,97 @@ resource "aws_s3_bucket" "my_s3_portfolio" {
 }
 
 resource "aws_cloudfront_distribution" "web_distribution" {
- origin {
-  domain_name = "alexandermoreton.co.uk"
-  origin_id = "S3-Website-alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
-
-  custom_origin_config {
-   http_port = 80
-   https_port = 443
-   origin_protocol_policy = "http-only"
-   origin_ssl_protocols = ["TLSv1.2", "TLSv1.1", "TLSv1"]
-   origin_keepalive_timeout = 5
-   origin_read_timeout = 30
-  }
- }
-
- enabled = true
- is_ipv6_enabled = true
-
- ordered_cache_behavior {
-  allowed_methods = ["GET", "HEAD"]
-  cached_methods = ["GET", "HEAD"]
-  target_origin_id = "S3-Website-alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
-  path_pattern = "*.zip"
-
-  forwarded_values {
-   query_string = false
-
-   cookies {
-    forward = "none"
-   }
+  origin {
+    custom_origin_config {
+      http_port              = "80"
+      https_port             = "443"
+      origin_protocol_policy = "http-only"
+      origin_ssl_protocols   = ["TLSv1", "TLSv1.1", "TLSv1.2"]
+    }
+    domain_name = "${var.root_domain_name}"
+    origin_id = "S3-Website-alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
   }
 
-  viewer_protocol_policy = "allow-all"
-  min_ttl = 0
-  max_ttl = 31536000
-  default_ttl = 86400
- }
+  enabled             = true
+  default_root_object = "index.html"
 
- default_cache_behavior {
-  allowed_methods = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
-  cached_methods = ["GET", "HEAD"]
-  target_origin_id = "S3-Website-alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
-  smooth_streaming = false
+  default_cache_behavior {
+    viewer_protocol_policy = "redirect-to-https"
+    compress               = true
+    allowed_methods        = ["GET", "HEAD"]
+    cached_methods         = ["GET", "HEAD"]
+    target_origin_id       = "S3-Website-alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
+    min_ttl                = 0
+    default_ttl            = 86400
+    max_ttl                = 31536000
 
-  forwarded_values {
-   query_string = false
-
-   cookies {
-    forward = "whitelist"
-    whitelisted_names = ["session", "variables"]
-   }
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
   }
 
-  viewer_protocol_policy = "allow-all"
-  min_ttl = 0
-  max_ttl = 31536000
-  default_ttl = 86400
- }
-   
- restrictions {
-  geo_restriction {
-   restriction_type = "none"
+  aliases = ["${var.root_domain_name}"]
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "none"
+    }
   }
- }
-  
- viewer_certificate {
-  cloudfront_default_certificate = true
- }
+
+  viewer_certificate {
+    acm_certificate_arn = "arn:aws:acm:us-east-1:158871758094:certificate/40d21597-5077-494b-af1a-f9f3758c1b1d"
+    ssl_support_method  = "sni-only"
+  }
 }
 
 resource "aws_cloudfront_distribution" "www_distribution" {
- origin {
-  domain_name = "www.alexandermoreton.co.uk"
-  origin_id = "S3-Website-www.alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
-
-  custom_origin_config {
-   http_port = 80
-   https_port = 443
-   origin_protocol_policy = "http-only"
-   origin_ssl_protocols = ["TLSv1.2", "TLSv1.1", "TLSv1"]
-   origin_keepalive_timeout = 5
-   origin_read_timeout = 30
-  }
- }
-
- enabled = true
- is_ipv6_enabled = true
-
- ordered_cache_behavior {
-  allowed_methods = ["GET", "HEAD"]
-  cached_methods = ["GET", "HEAD"]
-  target_origin_id = "S3-Website-www.alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
-  path_pattern = "*.zip"
-
-  forwarded_values {
-   query_string = false
-
-   cookies {
-    forward = "none"
-   }
+  origin {
+    custom_origin_config {
+      http_port              = "80"
+      https_port             = "443"
+      origin_protocol_policy = "http-only"
+      origin_ssl_protocols   = ["TLSv1", "TLSv1.1", "TLSv1.2"]
+    }
+    domain_name = "${var.www_domain_name}"
+    origin_id = "S3-Website-www.alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
   }
 
-  viewer_protocol_policy = "allow-all"
-  min_ttl = 0
-  max_ttl = 31536000
-  default_ttl = 86400
- }
+  enabled             = true
+  default_root_object = "index.html"
 
- default_cache_behavior {
-  allowed_methods = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
-  cached_methods = ["GET", "HEAD"]
-  target_origin_id = "S3-Website-www.alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
-  smooth_streaming = false
+  default_cache_behavior {
+    viewer_protocol_policy = "allow-all"
+    compress               = true
+    allowed_methods        = ["GET", "HEAD"]
+    cached_methods         = ["GET", "HEAD"]
+    target_origin_id       = "S3-Website-www.alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
+    min_ttl                = 0
+    default_ttl            = 86400
+    max_ttl                = 31536000
 
-  forwarded_values {
-   query_string = false
-
-   cookies {
-    forward = "whitelist"
-    whitelisted_names = ["session", "variables"]
-   }
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
   }
 
-  viewer_protocol_policy = "allow-all"
-  min_ttl = 0
-  max_ttl = 31536000
-  default_ttl = 86400
- }
-   
- restrictions {
-  geo_restriction {
-   restriction_type = "none"
+  aliases = ["${var.www_domain_name}"]
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "none"
+    }
   }
- }
-  
- viewer_certificate {
-  cloudfront_default_certificate = true
- }
+
+  viewer_certificate {
+    acm_certificate_arn = "arn:aws:acm:us-east-1:158871758094:certificate/40d21597-5077-494b-af1a-f9f3758c1b1d"
+    ssl_support_method  = "sni-only"
+  }
 }
 
 data "aws_iam_policy_document" "codepipeline_assume_policy" {
