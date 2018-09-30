@@ -34,130 +34,152 @@ provider "aws" {
 # CodePipeline resources
 resource "aws_s3_bucket" "my_s3_portfolio" {
   bucket = "${var.bucket_name}"
-  acl    = "private"
+  acl    = "public-read"
+  website {
+    index_document = "index.html"
+    error_document = "error.html"
+  }
 }
 
-# resource "aws_cloudfront_distribution" "web_distribution" {
-#  origin {
-#   domain_name = "alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
-#   origin_id = "S3-Website-alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
-#  }
+resource "aws_cloudfront_distribution" "web_distribution" {
+ origin {
+  domain_name = "alexandermoreton.co.uk"
+  origin_id = "S3-Website-alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
 
-#  enabled = true
-#  is_ipv6_enabled = true
+  custom_origin_config {
+   http_port = 80
+   https_port = 443
+   origin_protocol_policy = "http-only"
+   origin_ssl_protocols = ["TLSv1.2", "TLSv1.1", "TLSv1"]
+   origin_keepalive_timeout = 5
+   origin_read_timeout = 30
+  }
+ }
 
-#  ordered_cache_behavior {
-#   allowed_methods = ["GET", "HEAD"]
-#   cached_methods = ["GET", "HEAD"]
-#   target_origin_id = "alexandermoreton.co.uk"
-#   path_pattern = "*.zip"
+ enabled = true
+ is_ipv6_enabled = true
 
-#   forwarded_values {
-#    query_string = false
+ ordered_cache_behavior {
+  allowed_methods = ["GET", "HEAD"]
+  cached_methods = ["GET", "HEAD"]
+  target_origin_id = "S3-Website-alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
+  path_pattern = "*.zip"
 
-#    cookies {
-#     forward = "none"
-#    }
-#   }
+  forwarded_values {
+   query_string = false
 
-#   viewer_protocol_policy = "allow-all"
-#   min_ttl = 0
-#   max_ttl = 31536000
-#   default_ttl = 86400
-#  }
+   cookies {
+    forward = "none"
+   }
+  }
 
-#  default_cache_behavior {
-#   allowed_methods = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
-#   cached_methods = ["GET", "HEAD"]
-#   target_origin_id = "alexandermoreton.co.uk"
-#   smooth_streaming = false
+  viewer_protocol_policy = "allow-all"
+  min_ttl = 0
+  max_ttl = 31536000
+  default_ttl = 86400
+ }
 
-#   forwarded_values {
-#    query_string = false
+ default_cache_behavior {
+  allowed_methods = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
+  cached_methods = ["GET", "HEAD"]
+  target_origin_id = "S3-Website-alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
+  smooth_streaming = false
 
-#    cookies {
-#     forward = "whitelist"
-#     whitelisted_names = ["session", "variables"]
-#    }
-#   }
+  forwarded_values {
+   query_string = false
 
-#   viewer_protocol_policy = "allow-all"
-#   min_ttl = 0
-#   max_ttl = 31536000
-#   default_ttl = 86400
-#  }
+   cookies {
+    forward = "whitelist"
+    whitelisted_names = ["session", "variables"]
+   }
+  }
+
+  viewer_protocol_policy = "allow-all"
+  min_ttl = 0
+  max_ttl = 31536000
+  default_ttl = 86400
+ }
    
-#  restrictions {
-#   geo_restriction {
-#    restriction_type = "none"
-#   }
-#  }
+ restrictions {
+  geo_restriction {
+   restriction_type = "none"
+  }
+ }
   
-#  viewer_certificate {
-#   cloudfront_default_certificate = true
-#  }
-# }
+ viewer_certificate {
+  cloudfront_default_certificate = true
+ }
+}
 
-# resource "aws_cloudfront_distribution" "www_distribution" {
-#  origin {
-#   domain_name = "www.alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
-#   origin_id = "S3-Website-www.alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
-#  }
+resource "aws_cloudfront_distribution" "www_distribution" {
+ origin {
+  domain_name = "www.alexandermoreton.co.uk"
+  origin_id = "S3-Website-www.alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
 
-#  enabled = true
-#  is_ipv6_enabled = true
+  custom_origin_config {
+   http_port = 80
+   https_port = 443
+   origin_protocol_policy = "http-only"
+   origin_ssl_protocols = ["TLSv1.2", "TLSv1.1", "TLSv1"]
+   origin_keepalive_timeout = 5
+   origin_read_timeout = 30
+  }
+ }
 
-#  ordered_cache_behavior {
-#   allowed_methods = ["GET", "HEAD"]
-#   cached_methods = ["GET", "HEAD"]
-#   target_origin_id = "www.alexandermoreton.co.uk"
-#   path_pattern = "*.zip"
+ enabled = true
+ is_ipv6_enabled = true
 
-#   forwarded_values {
-#    query_string = false
+ ordered_cache_behavior {
+  allowed_methods = ["GET", "HEAD"]
+  cached_methods = ["GET", "HEAD"]
+  target_origin_id = "S3-Website-www.alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
+  path_pattern = "*.zip"
 
-#    cookies {
-#     forward = "none"
-#    }
-#   }
+  forwarded_values {
+   query_string = false
 
-#   viewer_protocol_policy = "allow-all"
-#   min_ttl = 0
-#   max_ttl = 31536000
-#   default_ttl = 86400
-#  }
+   cookies {
+    forward = "none"
+   }
+  }
 
-#  default_cache_behavior {
-#   allowed_methods = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
-#   cached_methods = ["GET", "HEAD"]
-#   target_origin_id = "www.alexandermoreton.co.uk"
-#   smooth_streaming = false
+  viewer_protocol_policy = "allow-all"
+  min_ttl = 0
+  max_ttl = 31536000
+  default_ttl = 86400
+ }
 
-#   forwarded_values {
-#    query_string = false
+ default_cache_behavior {
+  allowed_methods = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
+  cached_methods = ["GET", "HEAD"]
+  target_origin_id = "S3-Website-www.alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
+  smooth_streaming = false
 
-#    cookies {
-#     forward = "whitelist"
-#     whitelisted_names = ["session", "variables"]
-#    }
-#   }
+  forwarded_values {
+   query_string = false
 
-#   viewer_protocol_policy = "allow-all"
-#   min_ttl = 0
-#   max_ttl = 31536000
-#   default_ttl = 86400
-#  }
+   cookies {
+    forward = "whitelist"
+    whitelisted_names = ["session", "variables"]
+   }
+  }
+
+  viewer_protocol_policy = "allow-all"
+  min_ttl = 0
+  max_ttl = 31536000
+  default_ttl = 86400
+ }
    
-#  restrictions {
-#   geo_restriction {
-#    restriction_type = "none"
-#   }
-#  }
+ restrictions {
+  geo_restriction {
+   restriction_type = "none"
+  }
+ }
   
-#  viewer_certificate {
-#   cloudfront_default_certificate = true
-#  }
-# }
+ viewer_certificate {
+  cloudfront_default_certificate = true
+ }
+}
 
 data "aws_iam_policy_document" "codepipeline_assume_policy" {
   statement {
