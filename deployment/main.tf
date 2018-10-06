@@ -19,6 +19,11 @@ variable "root_domain_name" {
   default = "alexandermoreton.co.uk"
 }
 
+variable "origin" {
+  type    = "string"
+  default = "s3-website-us-west-2.amazonaws.com"
+}
+
 variable "github_username" {
   type    = "string"
   default = "lxm7"
@@ -52,8 +57,17 @@ resource "aws_s3_bucket" "my_s3_portfolio" {
             "Principal": {
                 "AWS": "*"
             },
-            "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::${var.www_domain_name}/*"
+            "Action":[
+                "s3:PutObject",
+                "s3:PutObjectAcl",
+                "s3:GetObject",
+                "s3:GetObjectAcl",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::${var.www_domain_name}",
+                "arn:aws:s3:::${var.www_domain_name}/*"
+            ]
         }
     ]
 }
@@ -73,19 +87,19 @@ resource "aws_cloudfront_distribution" "web_distribution" {
       origin_protocol_policy = "http-only"
       origin_ssl_protocols   = ["TLSv1", "TLSv1.1", "TLSv1.2"]
     }
-    domain_name = "${var.root_domain_name}"
-    origin_id = "S3-Website-alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
+    domain_name = "${var.root_domain_name}.s3.amazonaws.com"
+    origin_id = "S3-Website-${var.root_domain_name}.${var.origin}"
   }
 
   enabled             = true
   default_root_object = "index.html"
 
   default_cache_behavior {
-    viewer_protocol_policy = "redirect-to-https"
+    viewer_protocol_policy = "allow-all"
     compress               = true
     allowed_methods        = ["GET", "HEAD"]
     cached_methods         = ["GET", "HEAD"]
-    target_origin_id       = "S3-Website-alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
+    target_origin_id       = "S3-Website-${var.root_domain_name}.${var.origin}"
     min_ttl                = 0
     default_ttl            = 86400
     max_ttl                = 31536000
@@ -120,19 +134,19 @@ resource "aws_cloudfront_distribution" "www_distribution" {
       origin_protocol_policy = "http-only"
       origin_ssl_protocols   = ["TLSv1", "TLSv1.1", "TLSv1.2"]
     }
-    domain_name = "${var.www_domain_name}"
-    origin_id = "S3-Website-www.alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
+    domain_name = "${var.www_domain_name}.s3.amazonaws.com"
+    origin_id = "S3-Website-${var.www_domain_name}.${var.origin}"
   }
 
   enabled             = true
   default_root_object = "index.html"
 
   default_cache_behavior {
-    viewer_protocol_policy = "allow-all"
+    viewer_protocol_policy = "redirect-to-https"
     compress               = true
-    allowed_methods        = ["GET", "HEAD"]
+    allowed_methods        = ["GET", "HEAD", "OPTIONS", "PUT", "POST", "PATCH", "DELETE"]
     cached_methods         = ["GET", "HEAD"]
-    target_origin_id       = "S3-Website-www.alexandermoreton.co.uk.s3-website-us-west-2.amazonaws.com"
+    target_origin_id       = "S3-Website-${var.www_domain_name}.${var.origin}"
     min_ttl                = 0
     default_ttl            = 86400
     max_ttl                = 31536000
