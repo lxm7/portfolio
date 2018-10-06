@@ -62,7 +62,9 @@ resource "aws_s3_bucket" "my_s3_portfolio" {
                 "s3:PutObjectAcl",
                 "s3:GetObject",
                 "s3:GetObjectAcl",
-                "s3:DeleteObject"
+                "s3:DeleteObject",
+                "s3:ListBucket",
+                "s3:ListBucketMultipartUploads"
             ],
             "Resource": [
                 "arn:aws:s3:::${var.www_domain_name}",
