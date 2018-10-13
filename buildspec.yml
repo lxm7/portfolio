@@ -5,7 +5,7 @@ phases:
      - echo "install step"
  pre_build:
    commands:
-     - echo "pre_build step"
+     - aws s3 rm "s3://www.alexandermoreton.co.uk/public" --recursive
  build:
    commands:
      - aws s3 sync --delete ./public  "s3://www.alexandermoreton.co.uk"
