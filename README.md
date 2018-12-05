@@ -4,12 +4,11 @@ It follows the [JAMstack architecture](https://jamstack.org) by using Git as a s
 
 ## Prerequisites
 
-- Node (I recommend using v8.2.0 or higher)
 - [Gatsby CLI](https://www.gatsbyjs.org/docs/)
 
 ### Access Locally
 
-Once setup with yuor own Netlify account and hooked your github, then follow:
+Once setup with your own Netlify account and you have hooked up your github, then follow:
 
 ```
 $ git clone https://github.com/[GITHUB_USERNAME]/[REPO_NAME].git
