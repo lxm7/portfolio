@@ -4,7 +4,7 @@ node_modules
 .cache/
 
 # Build directory - Ignore for now until this gets added in remote build step
-public/
+# public/
 static/admin/*.bundle.*
 
 .DS_Store
