@@ -5,40 +5,20 @@ import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const Article = ({ post }) => (
-  <article key={post.id} className="Grid-cell content">
-    <div style={{ width: "100%" }}>
+  <article key={post.id} className="Grid-cell bottom5em">
+    <div className="full_width">
       <h3>{post.frontmatter.title}</h3>
 
       <a className="image_wrap has-text-primary" href={post.frontmatter.url}>
         <Img
-          style={{ width: "100%" }}
+          className="full_width"
           src={post.frontmatter.image}
           loader={
-            <div
-              style={{
-                width: "100%",
-                minHeight: "190px",
-                background: "#ddd",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
+            <div className="placeholder">
               <Loader type="TailSpin" color="gray" height={40} width={40} />
             </div>
           }
-          unloader={
-            <div
-              style={{
-                width: "100%",
-                minHeight: "150px",
-                background: "#ccc",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            />
-          }
+          unloader={<div className="placeholder" />}
         />
       </a>
 

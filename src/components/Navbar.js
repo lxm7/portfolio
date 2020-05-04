@@ -7,9 +7,7 @@ const Navbar = () => (
       <Link className="content content--top" to="/">
         <h2>Alex Moreton</h2>
       </Link>
-      <p style={{ fontSize: "1.3em", margin: 0 }}>
-        Front End / Full-Stack Developer
-      </p>
+      <p className="fat-p">Front End / Full-Stack Developer</p>
       <p>Quick portfolio site built with Gatsby, NetlifyCMS and AWS</p>
       <div className="content content--top">
         <Link className="navbar-item" to="/about">
