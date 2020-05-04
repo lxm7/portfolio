@@ -1,16 +1,15 @@
 ---
 templateKey: blog-post
-title: WIP - CryptoCommits
-date: 2018-09-18T18:52:29.071Z
+title: CryptoCommits (own demo)
+date: 2018-09-17T19:25:00.000Z
 description: Coming soon
 image: /img/cryptocommits.png
-url: https://github.com/lxm7
+url: https://github.com/lxm7/cryptocommits-server
 tags:
-  - ReactNative
   - React
   - GraphQL
   - Redux
   - Node
-  - AWS
 ---
+
 ![](/img/cryptocommits.png)

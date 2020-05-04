@@ -1,8 +1,8 @@
 ---
 templateKey: blog-post
-title: Amplifon – Around the world in sound
+title: Branded3 (now Edit)
 date: 2018-09-17T19:22:10.816Z
-description: . 
+description: .
 image: /img/amplifon-1-768x430.png
 url: https://www.amplifon.com/web/uk/around-the-world-in-sound
 tags:
@@ -10,4 +10,5 @@ tags:
   - Node
   - MongoDB
 ---
+
 ![](/img/amplifon-1-768x430.png)

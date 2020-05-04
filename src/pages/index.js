@@ -1,40 +1,33 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
-import Layout from '../components/Layout'
+import React from "react";
+import PropTypes from "prop-types";
+import { graphql } from "gatsby";
+import Layout from "../components/Layout";
+import Article from "../components/Article";
 
 export default class IndexPage extends React.Component {
   render() {
-    const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
-    const rows = [...Array( Math.ceil(posts.length / 4) )];
-    const postRows = rows.map( (_, idx) => posts.slice(idx * 4, idx * 4 + 4) );
+    const { data } = this.props;
+    const { edges: posts } = data.allMarkdownRemark;
+    const rows = [...Array(Math.ceil(posts.length / 4))];
+    const postRows = rows.map((_, idx) => posts.slice(idx * 4, idx * 4 + 4));
 
     return (
       <Layout>
-        {
-          <section className="section">
-            {postRows.map((row, idx) => (
-              <div className="Grid Grid--gutters Grid--full large-Grid--fit" key={idx}>    
-                {row.map(({node: post}) =>
-                  <article key={post.id} className="Grid-cell content">
-                    <div style={{width: '100%'}}>
-                      <h3>{post.frontmatter.title}</h3>
-
-                      <a className="image_wrap has-text-primary" href={post.frontmatter.url}>
-                        <img src={post.frontmatter.image} alt='' />
-                      </a>
-
-                      <p>{post.frontmatter.tags.join(' | ')}</p>
-                    </div>
-                  </article>  
-                )}
-              </div>
-            ))}
-          </section>
-        }
+        <h2>Recent work</h2>
+        <section className="section">
+          {postRows.map((
+            row,
+            idx // Remove large-Grid--fit styles, show lazy load single col instead
+          ) => (
+            <div key={idx}>
+              {row.map(({ node: post }) => (
+                <Article post={post} />
+              ))}
+            </div>
+          ))}
+        </section>
       </Layout>
-    )
+    );
   }
 }
 
@@ -44,13 +37,13 @@ IndexPage.propTypes = {
       edges: PropTypes.array,
     }),
   }),
-}
+};
 
 export const pageQuery = graphql`
   query IndexQuery {
     allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] },
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
+      sort: { order: DESC, fields: [frontmatter___date] }
+      filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
     ) {
       edges {
         node {
@@ -71,4 +64,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

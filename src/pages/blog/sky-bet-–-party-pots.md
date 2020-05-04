@@ -1,8 +1,8 @@
 ---
 templateKey: blog-post
-title: SkyBet – Party Pots
+title: SkyBet (Party Pots)
 date: 2018-09-17T19:27:03.625Z
-description: . 
+description: .
 image: /img/pps-768x393.png
 url: https://www.skyvegas.com/
 tags:
@@ -11,6 +11,7 @@ tags:
   - Redux
   - Typescript
 ---
+
 ![](/img/pps-768x393.png)
 
 .

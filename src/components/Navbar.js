@@ -1,38 +1,38 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React from "react";
+import { Link } from "gatsby";
 
 const Navbar = () => (
   <nav className="navbar is-transparent">
     <div className="container">
       <Link className="content content--top" to="/">
         <h2>Alex Moreton</h2>
-        <p>Front end developer portfolio</p>
       </Link>
+      <p style={{ fontSize: "1.3em", margin: 0 }}>
+        Front End / Full-Stack Developer
+      </p>
+      <p>Quick portfolio site built with Gatsby, NetlifyCMS and AWS</p>
       <div className="content content--top">
         <Link className="navbar-item" to="/about">
           About
         </Link>
-        <a 
-            className="navbar-item"
-            href='https://github.com/lxm7'
-        >
-            Github
+        <a className="navbar-item" href="https://github.com/lxm7">
+          Github
         </a>
         <a
-            className="navbar-item"
-            href='https://www.linkedin.com/in/alex-moreton-3519633b/'
+          className="navbar-item"
+          href="https://www.linkedin.com/in/alex-moreton-3519633b/"
         >
-            LinkedIn
+          LinkedIn
         </a>
         <a
-            className="navbar-item"
-            href='https://stackoverflow.com/users/1341935/lxm7?tab=profile'
+          className="navbar-item"
+          href="https://stackoverflow.com/users/1341935/lxm7?tab=profile"
         >
-            Stackoverflow
+          Stackoverflow
         </a>
       </div>
     </div>
   </nav>
-)
+);
 
-export default Navbar
+export default Navbar;

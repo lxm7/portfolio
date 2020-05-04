@@ -27,9 +27,11 @@
     "node-sass": "^4.11.0",
     "parcel-bundler": "^1.10.3",
     "prop-types": "^15.6.2",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-helmet": "^5.2.0",
+    "react-image": "^2.4.0",
+    "react-loader-spinner": "^3.1.14",
     "uuid": "^3.3.2"
   },
   "keywords": [
