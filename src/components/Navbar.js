@@ -10,9 +10,9 @@ const Navbar = () => (
       <p className="fat-p">Front End / Full-Stack Developer</p>
       <p>Quick portfolio site built with Gatsby, NetlifyCMS and AWS</p>
       <div className="content content--top">
-        <Link className="navbar-item" to="/about">
+        {/* <Link className="navbar-item" to="/about">
           About
-        </Link>
+        </Link> */}
         <a className="navbar-item" href="https://github.com/lxm7">
           Github
         </a>

@@ -4,6 +4,7 @@
   "version": "1.1.5",
   "author": "Alex Moreton",
   "dependencies": {
+    "axios": "^0.19.2",
     "bulma": "^0.7.0",
     "gatsby": "^2.1.34",
     "gatsby-image": "^2.0.23",
@@ -41,18 +42,19 @@
   "main": "n/a",
   "scripts": {
     "clean": "gatsby clean",
-    "start:app": "npm run develop",
+    "start": "npm run develop",
     "start:lambda": "netlify-lambda serve src/lambda",
-    "start": "run-p start:**",
-    "build:app": "npm run clean && gatsby build",
+    "start:p": "run-p start:**",
+    "build": "npm run clean && gatsby build",
     "build:lambda": "netlify-lambda build src/lambda",
-    "build": "run-p build:**",
+    "build:p": "run-p build:**",
     "develop": "npm run clean && gatsby develop",
     "serve": "gatsby serve",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "gatsby-remark-images-native-lazy-load": "^1.0.0",
     "http-proxy-middleware": "^0.19.1",
     "netlify-lambda": "^1.4.3",
     "npm-run-all": "^4.1.5",

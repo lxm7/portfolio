@@ -1,8 +1,8 @@
 import React from "react";
-import Img from "react-image";
-import Loader from "react-loader-spinner";
+import PropTypes from "prop-types";
 
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Image from "../components/Image";
+// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const Article = ({ post }) => (
   <article key={post.id} className="Grid-cell bottom5em">
@@ -10,15 +10,18 @@ const Article = ({ post }) => (
       <h3>{post.frontmatter.title}</h3>
 
       <a className="image_wrap has-text-primary" href={post.frontmatter.url}>
-        <Img
+        <Image
+          key={post.id}
           className="full_width"
           src={post.frontmatter.image}
-          loader={
-            <div className="placeholder">
-              <Loader type="TailSpin" color="gray" height={40} width={40} />
-            </div>
+          fallbackSrc={
+            "https://media.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.gif"
           }
-          unloader={<div className="placeholder" />}
+          // <div className="placeholder">
+          //   <Loader type="TailSpin" color="gray" height={40} width={40} />
+          // </div>
+          isLazy
+          alt={post.id}
         />
       </a>
 
