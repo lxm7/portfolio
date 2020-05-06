@@ -1,1 +1,140 @@
-.Grid{display:flex;flex-wrap:wrap;list-style:none;margin:0;padding:0}.Grid-cell{flex:1 1}.Grid--gutters{margin:-1em 0 0 -1em}.Grid--gutters>.Grid-cell{padding:1em 0 0 1em}.Grid--top{align-items:flex-start}.Grid--bottom{align-items:flex-end}.Grid--center{align-items:center}.Grid-cell--top{align-self:flex-start}.Grid-cell--bottom{align-self:flex-end}.Grid-cell--center{align-self:center}.Grid--fit>.Grid-cell{flex:1 1}.Grid--full>.Grid-cell{flex:0 0 100%}.Grid--1of2>.Grid-cell{flex:0 0 50%}.Grid--1of3>.Grid-cell{flex:0 0 33.3333%}.Grid--1of4>.Grid-cell{flex:0 0 25%}@media (min-width:24em){.small-Grid--fit>.Grid-cell{flex:1 1}.small-Grid--full>.Grid-cell{flex:0 0 100%}.small-Grid--1of2>.Grid-cell{flex:0 0 50%}.small-Grid--1of3>.Grid-cell{flex:0 0 33.3333%}.small-Grid--1of4>.Grid-cell{flex:0 0 25%}}@media (min-width:48em){.large-Grid--fit>.Grid-cell{flex:1 1}.large-Grid--full>.Grid-cell{flex:0 0 100%}.large-Grid--1of2>.Grid-cell{flex:0 0 50%}.large-Grid--1of3>.Grid-cell{flex:0 0 33.3333%}.large-Grid--1of4>.Grid-cell{flex:0 0 25%}}*{box-sizing:border-box}body{font-family:monospace;background-color:#eee;margin:40px}a{color:#000}h2{margin:2em 0 1em;font-size:1.8em}h3{text-decoration:underline}.image_wrap{position:relative;width:100%;display:flex;align-items:center;justify-content:center}.image_wrap img{width:100%;color:#000;height:auto}.section{clear:both;max-width:500px}.navbar-item{display:block;margin:.5em 0}.bottom5em{margin-bottom:5em}.top4em{margin-top:4em}.full_width{width:100%}.placeholder{width:100%;min-height:150px;background:#ccc;display:flex;align-items:center;justify-content:center}.fat-p{font-size:1.3em;margin:0}
+.Grid {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+.Grid-cell {
+  flex: 1 1; }
+
+/* With gutters */
+.Grid--gutters {
+  margin: -1em 0 0 -1em; }
+
+.Grid--gutters > .Grid-cell {
+  padding: 1em 0 0 1em; }
+
+/* Alignment per row */
+.Grid--top {
+  align-items: flex-start; }
+
+.Grid--bottom {
+  align-items: flex-end; }
+
+.Grid--center {
+  align-items: center; }
+
+/* Alignment per cell */
+.Grid-cell--top {
+  align-self: flex-start; }
+
+.Grid-cell--bottom {
+  align-self: flex-end; }
+
+.Grid-cell--center {
+  align-self: center; }
+
+/* Base classes for all media */
+.Grid--fit > .Grid-cell {
+  flex: 1 1; }
+
+.Grid--full > .Grid-cell {
+  flex: 0 0 100%; }
+
+.Grid--1of2 > .Grid-cell {
+  flex: 0 0 50%; }
+
+.Grid--1of3 > .Grid-cell {
+  flex: 0 0 33.3333%; }
+
+.Grid--1of4 > .Grid-cell {
+  flex: 0 0 25%; }
+
+/* Small to medium screens */
+@media (min-width: 24em) {
+  .small-Grid--fit > .Grid-cell {
+    flex: 1 1; }
+  .small-Grid--full > .Grid-cell {
+    flex: 0 0 100%; }
+  .small-Grid--1of2 > .Grid-cell {
+    flex: 0 0 50%; }
+  .small-Grid--1of3 > .Grid-cell {
+    flex: 0 0 33.3333%; }
+  .small-Grid--1of4 > .Grid-cell {
+    flex: 0 0 25%; } }
+
+/* Large screens */
+@media (min-width: 48em) {
+  .large-Grid--fit > .Grid-cell {
+    flex: 1 1; }
+  .large-Grid--full > .Grid-cell {
+    flex: 0 0 100%; }
+  .large-Grid--1of2 > .Grid-cell {
+    flex: 0 0 50%; }
+  .large-Grid--1of3 > .Grid-cell {
+    flex: 0 0 33.3333%; }
+  .large-Grid--1of4 > .Grid-cell {
+    flex: 0 0 25%; } }
+
+* {
+  box-sizing: border-box; }
+
+body {
+  font-family: monospace;
+  background-color: #eee;
+  margin: 40px; }
+
+a {
+  color: #000000; }
+
+h2 {
+  margin: 2em 0 1em;
+  font-size: 1.8em; }
+
+h3 {
+  text-decoration: underline; }
+
+.image_wrap {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.image_wrap img {
+  width: 100%;
+  color: #000000;
+  height: auto; }
+
+.section {
+  clear: both;
+  max-width: 500px; }
+
+.navbar-item {
+  display: block;
+  margin: 0.5em 0; }
+
+.bottom5em {
+  margin-bottom: 5em; }
+
+.top4em {
+  margin-top: 4em; }
+
+.full_width {
+  width: 100%; }
+
+.placeholder {
+  width: 100%;
+  min-height: 150px;
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.fat-p {
+  font-size: 1.3em;
+  margin: 0; }
+
+
+/*# sourceMappingURL=cms.css.map*/

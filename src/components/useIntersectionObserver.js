@@ -14,7 +14,11 @@ export const useIntersectionObserver = (options) => {
         (ioEntry) => {
           setEntries(ioEntry);
         },
-        { threshold, root, rootMargin }
+        {
+          threshold,
+          root: document.getElementById("scrollArea") || root,
+          rootMargin,
+        }
       );
 
       elements.forEach((element) => {

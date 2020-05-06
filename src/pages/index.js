@@ -1,67 +1,131 @@
-import React, { useEffect, useState, useRef } from "react";
+import React from "react";
 import PropTypes from "prop-types";
+import { graphql } from "gatsby";
+import styled, { css } from "styled-components";
+
+import "intersection-observer";
 
 // Components
-import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import Article from "../components/Article";
 
-// Hooks
-import { useIntersectionObserver } from "../components/useIntersectionObserver";
+const Horizontal = styled.div`
+  display: flex;
+`;
 
-const IndexPage = ({ data }) => {
-  // Fetch data
-  const { edges: posts } = data.allMarkdownRemark;
+const Navigation = styled.nav`
+  margin: 30px;
+`;
 
-  // Set options for grid (disabled currently via minimal CSS)
-  const rows = [...Array(Math.ceil(posts.length / 4))];
-  const postRows = rows.map((_, idx) => posts.slice(idx * 4, idx * 4 + 4));
+const ScrollArea = styled.div`
+  overflow-y: scroll;
+  height: 100vh;
+`;
 
-  // Fetch and sets entries when they are being observed
-  const [observer, setElements, entries] = useIntersectionObserver({
-    threshold: 0.8,
-    root: document.querySelector("#root"), // useRef
-  });
+const Anchor = styled.a`
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  ${(props) =>
+    props.selected
+      ? css`
+          border-bottom: 1px solid #000;
+          font-weight: bold;
+        `
+      : null};
+`;
 
-  // Collect all elements with `lazy` className for intersection
-  useEffect(() => {
-    if (posts.length) {
-      let img = Array.from(document.getElementsByClassName("lazy")); // useRef
-      setElements(img);
-    }
-  }, [posts, setElements]);
+class IndexPage extends React.Component {
+  constructor(props) {
+    super(props);
 
-  // Here we actually load/set the data src once in view. We know this from
-  // the useIntersectionObserver hook. Once in View, remove class and observing.
-  useEffect(() => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        let lazyImage = entry.target;
-        lazyImage.src = lazyImage.dataset.src;
-        lazyImage.classList.remove("lazy");
-        observer.unobserve(lazyImage);
+    this.rootRef = React.createRef();
+
+    this.state = {
+      activeThing: { id: null, ratio: 0 },
+    };
+
+    this.singleRefs = this.props.data.allMarkdownRemark.edges.reduce(
+      (acc, value) => {
+        acc[value.node.id] = {
+          ref: React.createRef(),
+          id: value.node.id,
+          ratio: 0,
+        };
+
+        return acc;
+      },
+      {}
+    );
+
+    const callback = (entries) => {
+      entries.forEach((entry) => {
+        return (this.singleRefs[entry.target.id].ratio =
+          entry.intersectionRatio);
+      });
+
+      const activeThing = Object.values(this.singleRefs).reduce(
+        (acc, value) => (value.ratio > acc.ratio ? value : acc),
+        this.state.activeThing
+      );
+
+      if (activeThing.ratio > this.state.activeThing.ratio) {
+        this.setState({ activeThing });
       }
-    });
-  }, [entries, observer]);
+    };
 
-  return (
-    <Layout id="root">
-      <h2>Recent work</h2>
-      <section className="section">
-        {postRows.map((
-          row,
-          idx // Remove large-Grid--fit styles, show lazy load single col instead
-        ) => (
-          <div key={idx}>
-            {row.map(({ node: post }) => (
-              <Article key={post.id} post={post} />
+    this.observer = new IntersectionObserver(callback, {
+      root: this.rootRef.current,
+      threshold: new Array(101).fill(0).map((v, i) => i * 0.01),
+    });
+  }
+
+  componentDidMount() {
+    Object.values(this.singleRefs).forEach((value) =>
+      this.observer.observe(value.ref.current)
+    );
+  }
+  render() {
+    const { data } = this.props;
+    const { edges: posts } = data.allMarkdownRemark;
+
+    return (
+      <Layout id="root">
+        <h2>Recent work</h2>
+        <Horizontal>
+          <Navigation>
+            {this.props.data.allMarkdownRemark.edges.map((post) => (
+              <div key={post.node.id}>
+                <Anchor
+                  href={`#${post.node.id}`}
+                  selected={post.node.id === this.state.activeThing.id}
+                >
+                  {post.node.frontmatter.title}
+                </Anchor>
+              </div>
             ))}
-          </div>
-        ))}
-      </section>
-    </Layout>
-  );
-};
+          </Navigation>
+
+          <ScrollArea ref={this.rootRef}>
+            {posts.map((post) => (
+              <div
+                key={post.node.id}
+                id={post.node.id}
+                ref={this.singleRefs[post.node.id].ref}
+              >
+                <Article
+                  key={post.node.id}
+                  post={post}
+                  selected={post.node.id !== this.state.activeThing.id}
+                />
+              </div>
+            ))}
+          </ScrollArea>
+        </Horizontal>
+      </Layout>
+    );
+  }
+}
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
