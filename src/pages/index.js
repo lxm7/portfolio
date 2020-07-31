@@ -1,46 +1,52 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+import styles from "./blogIndex.module.css"
 
-const BlogIndex = ({ data, location }) => {
+const BlogIndex = ({ data }) => {
   const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.edges
+  const siteSummary = data.site.siteMetadata.author.summary
+  const siteDescription = data.site.siteMetadata.description
+  const posts = data.allMarkdownRemark?.edges
 
   return (
-    <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
-      <Bio />
-      {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
+    <div className={styles.postList}>
+      <h2>{siteTitle}</h2>
+      <h3>{siteSummary}</h3>
+      <h4>{siteDescription}</h4>
+      <div className={styles.spacer}>
+        <a className={styles.navbarItem} href="https://github.com/lxm7">
+          Github
+        </a>
+        <a
+          className={styles.navbarItem}
+          href="https://www.linkedin.com/in/alex-moreton-3519633b/"
+        >
+          LinkedIn
+        </a>
+        <a
+          className={styles.navbarItem}
+          href="https://stackoverflow.com/users/1341935/lxm7?tab=profile"
+        >
+          Stackoverflow
+        </a>
+      </div>
+      {posts.map(({ node }, i) => {
         return (
-          <article key={node.fields.slug}>
-            <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
+          <div key={i} className={styles.spacer}>
+            <a href={node.fields.slug} className={styles.title}>
+              {node.frontmatter.title}
+            </a>
+            <a href={node.frontmatter.url} className={styles.imgWrap}>
+              <img
+                src={node.frontmatter?.image?.publicURL}
+                alt={node.frontmatter?.image?.absolutePath}
               />
-            </section>
-          </article>
+            </a>
+          </div>
         )
       })}
-    </Layout>
+    </div>
   )
 }
 
@@ -51,19 +57,29 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        author {
+          summary
+        }
+        description
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
-          excerpt
           fields {
             slug
           }
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
             title
+            templateKey
+            date
             description
+            image {
+              id
+              publicURL
+              absolutePath
+            }
+            url
           }
         }
       }

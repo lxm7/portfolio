@@ -1,0 +1,19 @@
+body {
+  font-family: monospace;
+  background-color: #eee;
+  margin: 1.5rem;
+  font-size: 1.1rem;
+}
+
+a {
+  color: #000;
+}
+
+h2 {
+  margin: 2rem 0 1rem;
+  font-size: 1.8rem;
+}
+
+h3 {
+  text-decoration: underline;
+}
