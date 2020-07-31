@@ -62,6 +62,16 @@ module.exports = {
         icon: `content/assets/gatsby-icon.png`,
       },
     },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: "www.alexandermoreton.co.uk",
+        // Cloudfront already configured to hide bucket access and this plugin may fudge it
+        // Comment out if it is to be automated. Better to use serverless?
+        // protocol: "https",
+        // hostname: "www.alexandermoreton.co.uk",
+      },
+    },
     `gatsby-plugin-react-helmet`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
