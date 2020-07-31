@@ -59,17 +59,17 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `assets/gatsby-icon.png`,
       },
     },
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-        bucketName: "www.alexandermoreton.co.uk",
-        // Cloudfront already configured to hide bucket access and this plugin may fudge it
-        // Comment out if it is to be automated. Better to use serverless?
+        bucketName: "alexandermoreton.co.uk",
+        // Cloudfront already configured to hide direct bucket access and this plugin may fudge it
+        // Comment out if it is to be automated. Better to use serverless tho
         // protocol: "https",
-        // hostname: "www.alexandermoreton.co.uk",
+        // hostname: "alexandermoreton.co.uk",
       },
     },
     `gatsby-plugin-react-helmet`,

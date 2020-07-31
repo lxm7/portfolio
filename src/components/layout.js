@@ -28,7 +28,6 @@ const Layout = ({ location, title, children }) => {
     header = (
       <h3
         style={{
-          fontFamily: `Montserrat, sans-serif`,
           marginTop: 0,
         }}
       >
@@ -45,21 +44,10 @@ const Layout = ({ location, title, children }) => {
     )
   }
   return (
-    <div
-      style={{
-        marginLeft: `auto`,
-        marginRight: `auto`,
-        maxWidth: "25px",
-        padding: "10px 10px",
-      }}
-    >
+    <div style={{ maxWidth: "500px" }}>
       <header>{header}</header>
       <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
+      <footer>Built with Gatsby and AWS</footer>
     </div>
   )
 }

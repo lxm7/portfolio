@@ -38,10 +38,7 @@ const BlogIndex = ({ data }) => {
               {node.frontmatter.title}
             </a>
             <a href={node.frontmatter.url} className={styles.imgWrap}>
-              <img
-                src={node.frontmatter?.image?.publicURL}
-                alt={node.frontmatter?.image?.absolutePath}
-              />
+              <img src={node.frontmatter?.image?.publicURL} alt="" />
             </a>
           </div>
         )

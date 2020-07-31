@@ -7,7 +7,7 @@ const NotFoundPage = ({ data, location }) => {
   return (
     <>
       <h1>{siteTitle} Not Found</h1>
-      <p>You just hit a route that doesn&#39;t exist at {location}</p>
+      <p>You just hit a route that doesn&#39;t exist at {location?.pathname}</p>
     </>
   )
 }
